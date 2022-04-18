@@ -54,9 +54,11 @@ public class FieldCube : MonoBehaviour
         {
             gameField.ChangeTowerType(GameManager.currentClickedButtonWidth, GameManager.currentClickedButtonHeight, GameField.TowerType.BASIC_TYPE);
 
+
             if(bfs.BFS_FindPath()==false)
             {
                 gameField.ChangeTowerType(GameManager.currentClickedButtonWidth, GameManager.currentClickedButtonHeight, GameField.TowerType.NONE);
+                uimanager.CreateWarningUI();
 
             }
             else

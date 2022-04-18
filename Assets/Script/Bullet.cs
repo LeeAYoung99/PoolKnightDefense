@@ -2,27 +2,58 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet : Poolable
 {
     private float dis;
     private float speed;
     private float waitTime;
     public Transform Target;
 
- 
+    public enum State
+    {
+        IDLE,
+        MOVE
+    }
+
+    State state;
+     
     void Start()
+    {
+        state = State.IDLE;
+    }
+
+    void Update()
+    {
+        if (state == State.IDLE)
+        {
+            Idle();
+        }
+        else if (state == State.MOVE)
+        {
+            Move();
+        }
+    }
+
+    void Idle()
     {
         dis = Vector3.Distance(gameObject.transform.position, Target.position);
 
         //포탄생성후 초반에 포탄이 벌어지듯이 연출하기위해
         //포탄의 회전을 캐릭터위치에서 포탄의 위치의 방향으로 놓습니다
         transform.rotation = Quaternion.LookRotation(transform.position - transform.parent.position);
-
+        state = State.MOVE;
+        waitTime = 0;
+        speed = 0;
     }
 
-    void Update()
+    void Move()
     {
         DiffusionMissile_Move_Operation();
+    }
+
+    public void SetState(State s)
+    {
+        state = s;
     }
 
     void DiffusionMissile_Move_Operation()

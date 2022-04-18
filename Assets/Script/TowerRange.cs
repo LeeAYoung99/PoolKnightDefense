@@ -84,10 +84,13 @@ public class TowerRange : MonoBehaviour
     void Shoot()
     {
         GameObject _bullet;
-        _bullet = Instantiate(bullet, 
-            new Vector3(gameObject.transform.position.x, gameObject.transform.position.y+ 0.7f, gameObject.transform.position.z) //+f 만큼 위에서 쏨
-            , Quaternion.identity);
-        _bullet.transform.parent = gameObject.transform;
+        //  _bullet = Instantiate(bullet, 
+        //    new Vector3(gameObject.transform.position.x, gameObject.transform.position.y+ 0.7f, gameObject.transform.position.z) //+f 만큼 위에서 쏨
+        //    , Quaternion.identity);
+        _bullet = ObjectPoolManager.Instance.pool.Pop();
+        _bullet.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 0.7f, gameObject.transform.position.z);
+      //  _bullet.transform.parent = gameObject.transform;
+        _bullet.GetComponent<Bullet>().SetState(Bullet.State.IDLE);
         bulletScript = _bullet.GetComponent<Bullet>();
         bulletScript.Target = target.transform;
     }
