@@ -9,13 +9,21 @@ public class TowerRange : MonoBehaviour
     private float time = 0;
     private bool findTarget = true;
 
+    private float upgradeTime = 0;
+    float maxUpgradeTime = 5.0f;
+
     public GameObject bullet;
     Bullet bulletScript;
+
+    TowerManager towerManager;
+    TowerManager.TowerType tType;
+    UIManager uiManager;
 
     public enum States
     {
         ATTACK_COOLTIME,
         ATTACK,
+        UPGRADING,
         IDLE
     }
 
@@ -24,6 +32,9 @@ public class TowerRange : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        tType = TowerManager.TowerType.BASIC;
+        towerManager = GameObject.Find("TowerManager").GetComponent<TowerManager>();
+        uiManager = GameObject.Find("UIManager").GetComponent<UIManager>();
         time = timeCycle;
         currentState = States.ATTACK;
     }
@@ -43,9 +54,17 @@ public class TowerRange : MonoBehaviour
             case States.ATTACK_COOLTIME:
                 AttackCooltime();
                 break;
+            case States.UPGRADING:
+                Upgrading();
+                break;
             case States.ATTACK:
                 Attack();
                 break;
+        }
+
+        if(IsClicked())
+        {
+            uiManager.CreateUpgradeTowerUI();
         }
 
     }
@@ -76,30 +95,55 @@ public class TowerRange : MonoBehaviour
         else
         {
             Shoot();
-            currentState = States.ATTACK_COOLTIME;
         }
     }
 
 
     void Shoot()
     {
-        GameObject _bullet;
-        //  _bullet = Instantiate(bullet, 
-        //    new Vector3(gameObject.transform.position.x, gameObject.transform.position.y+ 0.7f, gameObject.transform.position.z) //+f 만큼 위에서 쏨
-        //    , Quaternion.identity);
-        _bullet = ObjectPoolManager.Instance.pool.Pop();
-        _bullet.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 0.7f, gameObject.transform.position.z);
-      //  _bullet.transform.parent = gameObject.transform;
-        _bullet.GetComponent<Bullet>().SetState(Bullet.State.IDLE);
-        bulletScript = _bullet.GetComponent<Bullet>();
-        bulletScript.Target = target.transform;
+        switch (tType)
+        {
+            case TowerManager.TowerType.BASIC:
+                GameObject _bullet;
+
+                _bullet = ObjectPoolManager.Instance.pool.Pop();
+                _bullet.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 0.7f, gameObject.transform.position.z);
+                _bullet.GetComponent<Bullet>().SetState(Bullet.State.IDLE);
+                bulletScript = _bullet.GetComponent<Bullet>();
+                bulletScript.Target = target.transform;
+
+                currentState = States.ATTACK_COOLTIME;
+                
+                break;
+        }
+      
+    }
+
+    void Upgrading()
+    {
+        upgradeTime += Time.deltaTime;
+        if(upgradeTime >= maxUpgradeTime)
+        {
+            currentState = States.ATTACK;
+            upgradeTime = 0;
+        }
+    }
+
+    bool IsClicked()
+    {
+        return this.transform.parent.GetComponent<Click>(). mouseState;
+    }
+
+    public void RequestUpgrade(TowerManager.TowerType t)
+    {
+        currentState = States.UPGRADING;
+        tType = t;
     }
 
     public void OnTriggerEnter(Collider col)
     {
         if (col.CompareTag("Enemy") && findTarget)
         {
-            //Debug.Log("Enemy Spotted");
             target = col.gameObject;
             findTarget = false;
         }
@@ -113,5 +157,12 @@ public class TowerRange : MonoBehaviour
             findTarget = true;
             target = null;
         }
+    }
+
+    public void DeleteUpgradeTowerUI()
+    {
+        uiManager = GameObject.Find("UIManager").GetComponent<UIManager>();
+        uiManager.isUpgradeTowerUIOn = false;
+        Destroy(GameObject.Find("Canvas").transform.Find("UI_UpgradeTower(Clone)").gameObject);
     }
 }

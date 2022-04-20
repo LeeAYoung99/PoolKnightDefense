@@ -7,8 +7,10 @@ public class UIManager : MonoBehaviour
 
     public GameObject ClickUI;
     public GameObject WarningUI;
+    public GameObject UpgradeUI;
 
     public bool isCreateTowerUIOn = false;
+    public bool isUpgradeTowerUIOn = false;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +22,17 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void CreateUpgradeTowerUI()
+    {
+        if (!isUpgradeTowerUIOn)
+        {
+            GameObject _UpgradeUI;
+            _UpgradeUI = Instantiate(UpgradeUI, new Vector2(Camera.main.pixelWidth * 0.5f, Camera.main.pixelHeight * 0.5f), Quaternion.identity);
+            _UpgradeUI.transform.SetParent(GameObject.Find("Canvas").transform);
+            isUpgradeTowerUIOn = true;
+        }
     }
 
     public void CreateTowerUI()

@@ -9,7 +9,7 @@ public class FieldCube : MonoBehaviour
     int height = 0;
 
     Click click;
-    UIManager uimanager;
+    UIManager uiManager;
     GameField gameField;
 
     public GameObject Tower;
@@ -22,7 +22,7 @@ public class FieldCube : MonoBehaviour
     void Start()
     {
         click = gameObject.GetComponent<Click>();
-        uimanager = GameObject.Find("UIManager").GetComponent<UIManager>();
+        uiManager = GameObject.Find("UIManager").GetComponent<UIManager>();
         gameField = GameObject.Find("GameField").GetComponent<GameField>();
     }
 
@@ -35,7 +35,7 @@ public class FieldCube : MonoBehaviour
             GameManager.currentClickedButtonWidth = width;
             GameManager.currentClickedButtonHeight = height;
 
-            uimanager.CreateTowerUI();
+            uiManager.CreateTowerUI();
         }
     }
 
@@ -58,7 +58,7 @@ public class FieldCube : MonoBehaviour
             if(bfs.BFS_FindPath()==false)
             {
                 gameField.ChangeTowerType(GameManager.currentClickedButtonWidth, GameManager.currentClickedButtonHeight, GameField.TowerType.NONE);
-                uimanager.CreateWarningUI();
+                uiManager.CreateWarningUI();
 
             }
             else
@@ -72,9 +72,13 @@ public class FieldCube : MonoBehaviour
           
         }
 
+        DeleteCreateTowerUI();
+    }
 
-        uimanager = GameObject.Find("UIManager").GetComponent<UIManager>();
-        uimanager.isCreateTowerUIOn = false;
+    public void DeleteCreateTowerUI()
+    {
+        uiManager = GameObject.Find("UIManager").GetComponent<UIManager>();
+        uiManager.isCreateTowerUIOn = false;
         Destroy(GameObject.Find("Canvas").transform.Find("UI_BuildTower(Clone)").gameObject);
     }
 }
