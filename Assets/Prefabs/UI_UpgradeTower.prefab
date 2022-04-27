@@ -332,9 +332,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1991355667328112213, guid: 4c8a8f4abf5ee3c439634a247da9bb16, type: 3}
-        m_TargetAssemblyTypeName: FieldCube, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 7053767773477400049, guid: 4c8a8f4abf5ee3c439634a247da9bb16, type: 3}
+        m_TargetAssemblyTypeName: Tower, Assembly-CSharp
+        m_MethodName: DeleteUpgradeTowerUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -545,16 +545,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5029328091633759937, guid: 76fb643e5985fbe4e8bc8e3a775c83e4, type: 3}
-        m_TargetAssemblyTypeName: FieldCube, Assembly-CSharp
-        m_MethodName: CreateTower
-        m_Mode: 1
+      - m_Target: {fileID: 7053767773477400049, guid: 4c8a8f4abf5ee3c439634a247da9bb16, type: 3}
+        m_TargetAssemblyTypeName: Tower, Assembly-CSharp
+        m_MethodName: RequestUpgrade
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: FIRE
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &7824104587826435657
@@ -694,16 +694,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5029328091633759937, guid: 76fb643e5985fbe4e8bc8e3a775c83e4, type: 3}
-        m_TargetAssemblyTypeName: FieldCube, Assembly-CSharp
-        m_MethodName: CreateTower
-        m_Mode: 1
+      - m_Target: {fileID: 7053767773477400049, guid: 4c8a8f4abf5ee3c439634a247da9bb16, type: 3}
+        m_TargetAssemblyTypeName: Tower, Assembly-CSharp
+        m_MethodName: RequestUpgrade
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: CANNON
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &7824104587872971827
@@ -1238,16 +1238,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5029328091633759937, guid: 76fb643e5985fbe4e8bc8e3a775c83e4, type: 3}
-        m_TargetAssemblyTypeName: FieldCube, Assembly-CSharp
-        m_MethodName: CreateTower
-        m_Mode: 1
+      - m_Target: {fileID: 7053767773477400049, guid: 4c8a8f4abf5ee3c439634a247da9bb16, type: 3}
+        m_TargetAssemblyTypeName: Tower, Assembly-CSharp
+        m_MethodName: RequestUpgrade
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: SLOW
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &3696927058178006193

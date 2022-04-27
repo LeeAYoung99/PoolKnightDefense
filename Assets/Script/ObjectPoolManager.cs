@@ -13,7 +13,10 @@ public class ObjectPoolManager : MonoBehaviour
         }
     }
 
-    public ObjectPool pool;
+    public ObjectPool bulletPool;
+    public ObjectPool cannonPool;
+    public ObjectPool cannonEffectPool;
+    public ObjectPool slowPool;
 
     private void Awake()
     {

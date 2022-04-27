@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyCreator : MonoBehaviour
 {
-    HPBar hpbar;
     int enemyCount = 3;
     float timeCycle = 3.0f;
     private float time = 0;
@@ -15,7 +14,7 @@ public class EnemyCreator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        hpbar = GameObject.Find("HPBar").GetComponent<HPBar>();
+       // hpbar = GameObject.Find("HPBar").GetComponent<HPBar>();
     }
 
     // Update is called once per frame
@@ -34,13 +33,17 @@ public class EnemyCreator : MonoBehaviour
     {
         GameObject _enemy;
         _enemy = Instantiate(enemyList[0], this.gameObject.transform.position, Quaternion.identity);
-        hpbar.obj.Add(_enemy.transform);
+
+     //   int index = hpbar.obj.FindIndex(a => a == _enemy.transform);
+
         GameObject _hpui;
         _hpui = Instantiate(hpUI, new Vector3(0, 0, 0), Quaternion.identity);
         _hpui.transform.SetParent(GameObject.Find("Canvas").transform);
-        hpbar.hp_bar.Add(_hpui);
+        //hpbar.hp_bar.Add(_hpui);
+      //  _hpui.GetComponent<MonsterHP>().SetIndex(index);
         if(_hpui.GetComponent<MonsterHP>())
         {
+            Debug.Log("settarget");
             _hpui.GetComponent<MonsterHP>().SetTarget(_enemy);
         }
     }

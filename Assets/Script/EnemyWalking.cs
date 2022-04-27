@@ -9,6 +9,9 @@ public class EnemyWalking : MonoBehaviour
 	NavMeshAgent nav;
 	GameObject destTarget;
 
+	float basicSpeed = 0.4f;
+	float mySpeed;
+
 	void Start()
 	{
 		animator = GetComponent<Animator>();
@@ -16,11 +19,22 @@ public class EnemyWalking : MonoBehaviour
 
 		destTarget = GameObject.Find("Wall");
 		nav.SetDestination(destTarget.transform.position);
+		mySpeed = basicSpeed;
 	}
 
 	void Update()
 	{
-	//	nav.SetDestination(new Vector3(0, 0, 0));
+		nav.speed = mySpeed;
 	}
+
+	public void SetSpeed(float s)
+	{
+		mySpeed = s * basicSpeed;
+	}
+
+	public void ResetSpeed()
+    {
+		mySpeed = basicSpeed;
+    }
 
 }

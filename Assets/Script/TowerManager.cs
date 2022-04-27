@@ -8,7 +8,7 @@ public class TowerManager : MonoBehaviour
     {
         BASIC,
         SLOW,
-        CANNONBALL,
+        CANNON,
         FIRE,
     }
 
