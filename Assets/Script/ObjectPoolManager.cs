@@ -17,6 +17,7 @@ public class ObjectPoolManager : MonoBehaviour
     public ObjectPool cannonPool;
     public ObjectPool cannonEffectPool;
     public ObjectPool slowPool;
+    public ObjectPool poisonPool;
 
     private void Awake()
     {

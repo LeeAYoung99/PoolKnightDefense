@@ -45,11 +45,18 @@ public class CannonEffect : Poolable
         state = State.MOVE;
         this.gameObject.GetComponent<ParticleSystem>().Stop();
         this.gameObject.GetComponent<ParticleSystem>().Play();
+        this.gameObject.GetComponent<CapsuleCollider>().enabled = true;
     }
 
     void Move()
     {
         time += Time.deltaTime;
+
+        if(time >= 0.3f)
+        {
+            this.gameObject.GetComponent<CapsuleCollider>().enabled = false;
+        }
+
         if (time >= 1.2f)
         {
             this.Push();

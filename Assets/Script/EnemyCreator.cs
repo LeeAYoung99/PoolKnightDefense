@@ -4,28 +4,32 @@ using UnityEngine;
 
 public class EnemyCreator : MonoBehaviour
 {
-    int enemyCount = 3;
-    float timeCycle = 3.0f;
-    private float time = 0;
+    int enemyCount = 30;
+    float timeCycle = 5.0f;
+    private float time = 5.0f;
 
     public GameObject hpUI;
     public List<GameObject> enemyList;
+    GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
     {
-       // hpbar = GameObject.Find("HPBar").GetComponent<HPBar>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        time += Time.deltaTime;
-        if (enemyCount > 0 && time > timeCycle)
+        if (gameManager.gameStart)
         {
-            EnemyCreate();
-            enemyCount--;
-            time = 0;
+            time += Time.deltaTime;
+            if (enemyCount > 0 && time >= timeCycle)
+            {
+                EnemyCreate();
+                enemyCount--;
+                time = 0;
+            }
         }
     }
 
@@ -39,11 +43,8 @@ public class EnemyCreator : MonoBehaviour
         GameObject _hpui;
         _hpui = Instantiate(hpUI, new Vector3(0, 0, 0), Quaternion.identity);
         _hpui.transform.SetParent(GameObject.Find("Canvas").transform);
-        //hpbar.hp_bar.Add(_hpui);
-      //  _hpui.GetComponent<MonsterHP>().SetIndex(index);
         if(_hpui.GetComponent<MonsterHP>())
         {
-            Debug.Log("settarget");
             _hpui.GetComponent<MonsterHP>().SetTarget(_enemy);
         }
     }

@@ -332,7 +332,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7053767773477400049, guid: 4c8a8f4abf5ee3c439634a247da9bb16, type: 3}
+      - m_Target: {fileID: 7053767773477400049, guid: 4c8a8f4abf5ee3c439634a247da9bb16,
+          type: 3}
         m_TargetAssemblyTypeName: Tower, Assembly-CSharp
         m_MethodName: DeleteUpgradeTowerUI
         m_Mode: 1
@@ -437,7 +438,7 @@ GameObject:
   - component: {fileID: 7824104587826435658}
   - component: {fileID: 7824104587826435657}
   m_Layer: 5
-  m_Name: FireUpButton
+  m_Name: PoisonUpButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -545,7 +546,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7053767773477400049, guid: 4c8a8f4abf5ee3c439634a247da9bb16, type: 3}
+      - m_Target: {fileID: 7053767773477400049, guid: 4c8a8f4abf5ee3c439634a247da9bb16,
+          type: 3}
         m_TargetAssemblyTypeName: Tower, Assembly-CSharp
         m_MethodName: RequestUpgrade
         m_Mode: 5
@@ -554,7 +556,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: FIRE
+          m_StringArgument: POISON
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &7824104587826435657
@@ -694,7 +696,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7053767773477400049, guid: 4c8a8f4abf5ee3c439634a247da9bb16, type: 3}
+      - m_Target: {fileID: 7053767773477400049, guid: 4c8a8f4abf5ee3c439634a247da9bb16,
+          type: 3}
         m_TargetAssemblyTypeName: Tower, Assembly-CSharp
         m_MethodName: RequestUpgrade
         m_Mode: 5
@@ -1115,7 +1118,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Fire Tower
+  m_Text: Poison Tower
 --- !u!1 &8465258490004306133
 GameObject:
   m_ObjectHideFlags: 0
@@ -1238,7 +1241,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7053767773477400049, guid: 4c8a8f4abf5ee3c439634a247da9bb16, type: 3}
+      - m_Target: {fileID: 7053767773477400049, guid: 4c8a8f4abf5ee3c439634a247da9bb16,
+          type: 3}
         m_TargetAssemblyTypeName: Tower, Assembly-CSharp
         m_MethodName: RequestUpgrade
         m_Mode: 5

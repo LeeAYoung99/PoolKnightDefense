@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Click : MonoBehaviour
+public class Click : ClickManager
 {
-	Camera _mainCam = null;
-
 	private bool _mouseState;
 	private GameObject target;
 	private Vector3 MousePos;
@@ -16,7 +14,7 @@ public class Click : MonoBehaviour
 	void Awake()
 	{
 		_mouseState = false;
-		_mainCam = Camera.main;
+	
 	}
 
 	// Update is called once per frame 
@@ -34,7 +32,7 @@ public class Click : MonoBehaviour
 			{
 				//클릭 처리
 				//타겟을 받아온다.
-				target = GetClickedObject();
+				target = GetMouseOverObject();
 
 				//타겟이 나인가?
 				if (true == target.Equals(gameObject))
@@ -55,28 +53,4 @@ public class Click : MonoBehaviour
 
 
 
-	/// <summary>
-	/// 마우스가 내려간 오브젝트를 가지고 옵니다.
-	/// </summary>
-	private GameObject GetClickedObject()
-	{
-		//충돌이 감지된 영역
-		RaycastHit hit;
-		//찾은 오브젝트
-		GameObject target = null;
-
-		//마우스 포이트 근처 좌표를 만든다.
-		Ray ray = _mainCam.ScreenPointToRay(Input.mousePosition);
-
-		//마우스 근처에 오브젝트가 있는지 확인
-		if (true == (Physics.Raycast(ray.origin, ray.direction * 10, out hit)))
-		{
-			//있다!
-
-			//있으면 오브젝트를 저장한다.
-			target = hit.collider.gameObject;
-		}
-
-		return target;
-	}
 }

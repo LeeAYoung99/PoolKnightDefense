@@ -7,8 +7,8 @@ public class MonsterHP : MonoBehaviour
 {
     GameObject target;
     public Slider hpBarSlider;
-    int maxHp;
-    int currentHp;
+    float maxHp;
+    float currentHp;
     int index = 0;
 
     Camera _camera;
@@ -25,6 +25,10 @@ public class MonsterHP : MonoBehaviour
 
     void Update()
     {
+        if (target == null || enemy == null)
+        {
+            Destroy(this.gameObject);
+        }
         /*
         if (enemy == null)
         {
@@ -34,9 +38,9 @@ public class MonsterHP : MonoBehaviour
         currentHp = enemy.health;
         maxHp = enemy.maxHealth;
 
-        this.gameObject.transform.position = _camera.WorldToScreenPoint(enemy.transform.position + new Vector3(0, 1f, 0));
+        if (enemy) this.gameObject.transform.position = _camera.WorldToScreenPoint(enemy.transform.position) + new Vector3(0, 70.0f, 0);
 
-        if (currentHp <= 0 || target == null)
+        if (currentHp <= 0)
         {
             Destroy(this.gameObject);
         }

@@ -58,7 +58,12 @@ public class Bullet : Poolable
 
     void DiffusionMissile_Move_Operation()
     {
-        if (Target == null) return;
+        if (Target == null)
+        {
+            Push();
+            return;
+        }
+
 
 
         waitTime += Time.deltaTime;

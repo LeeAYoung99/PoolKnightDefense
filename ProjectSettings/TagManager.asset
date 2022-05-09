@@ -4,11 +4,13 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Enemy
+  - Shootable
   - Bullet
-  - NavMesh
-  - Plane
   - CannonSplash
+  - Enemy
+  - Plane
+  - Tower
+  - Card
   layers:
   - Default
   - TransparentFX
@@ -16,13 +18,13 @@ TagManager:
   - 
   - Water
   - UI
-  - NavMesh
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Lighting
+  - Ground
+  - Postprocessing
+  - Card
+  - Enemy
   - 
   - 
   - 
@@ -43,9 +45,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Fire
+    uniqueID: 3804908061
+    locked: 0
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: XButton
-    uniqueID: 549373951
     locked: 0

@@ -10,10 +10,12 @@ public class Cannon : Poolable
     public Transform Target;
     private Vector3 Dest;
     bool isDest;
+    SoundManager soundManager;
 
     private Transform myTransform;
 
     float elapse_time = 0;
+
 
     public enum State
     {
@@ -26,10 +28,12 @@ public class Cannon : Poolable
     void Start()
     {
         state = State.IDLE;
+        soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
     }
 
     void Update()
     {
+
         if (state == State.IDLE)
         {
             Idle();
@@ -63,7 +67,11 @@ public class Cannon : Poolable
 
     void DiffusionMissile_Move_Operation()
     {
-        if (Target == null) return;
+        if (Target == null)
+        {
+            Push();
+            return;
+        } 
 
         if (!isDest)
         {
@@ -106,6 +114,8 @@ public class Cannon : Poolable
     {
         if (col.CompareTag("Plane"))
         {
+            soundManager.BopPlay();
+
             this.Push();
 
             GameObject _cannonEffect;
