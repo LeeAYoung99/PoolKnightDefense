@@ -124,7 +124,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1.3508987, y: -21.6}
+  m_AnchoredPosition: {x: -1.3508987, y: -12.7}
   m_SizeDelta: {x: 310.5874, y: 109.2493}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3112911366979231315
@@ -157,7 +157,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: a07bf4e57427dbe4d9110baf7db3bbc3, type: 3}
-    m_FontSize: 30
+    m_FontSize: 38
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 3
@@ -168,4 +168,6 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uACBD\uACE0\n\uADF8\uACF3\uC5D4 \uC9C0\uC744  \uC218 \uC5C6\uC2B5\uB2C8\uB2E4!"
+  m_Text: '-Warning-
+
+    You Cannot Build There!'

@@ -17,7 +17,7 @@ public class EnemyWalking : MonoBehaviour
 		animator = GetComponent<Animator>();
 		nav = GetComponent<NavMeshAgent>();
 
-		destTarget = GameObject.Find("Wall");
+		destTarget = GameObject.Find("Goal");
 		nav.SetDestination(destTarget.transform.position);
 		mySpeed = basicSpeed;
 	}

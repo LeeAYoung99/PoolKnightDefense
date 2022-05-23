@@ -881,7 +881,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Cannon Tower
+  m_Text: 'Cannon Tower
+
+    50 Mineral'
 --- !u!1 &7824104588203761482
 GameObject:
   m_ObjectHideFlags: 0
@@ -1039,7 +1041,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Slow Tower
+  m_Text: 'Slow Tower
+
+    20 Mineral'
 --- !u!1 &7824104588392925765
 GameObject:
   m_ObjectHideFlags: 0
@@ -1118,7 +1122,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Poison Tower
+  m_Text: 'Poison Tower
+
+    40 Mineral'
 --- !u!1 &8465258490004306133
 GameObject:
   m_ObjectHideFlags: 0

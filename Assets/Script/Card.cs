@@ -24,6 +24,7 @@ public class Card : MonoBehaviour
         if(click.mouseState)
         {
             inventory.AddItem(type, 1);
+            Destroy(this.gameObject);
         }
     }
 }

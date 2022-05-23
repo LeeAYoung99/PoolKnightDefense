@@ -6,6 +6,7 @@ public class Tower : MonoBehaviour
 {
     public GameObject target = null; //���߿� public ����
     float timeCycle = 2.0f;
+    public float multipleDamage = 1.0f;
     private float time = 0;
     private bool findTarget = true;
 
@@ -155,6 +156,7 @@ public class Tower : MonoBehaviour
                 _bullet.GetComponent<Bullet>().SetState(Bullet.State.IDLE);
                 bulletScript = _bullet.GetComponent<Bullet>();
                 bulletScript.Target = target.transform;
+                bulletScript.MultiplyDamage(multipleDamage);
 
                 currentState = States.ATTACK_COOLTIME;
 
@@ -168,6 +170,7 @@ public class Tower : MonoBehaviour
                 _cannon.GetComponent<Cannon>().SetState(Cannon.State.IDLE);
                 cannonScript = _cannon.GetComponent<Cannon>();
                 cannonScript.Target = target.transform;
+                cannonScript.SetMultipleDamage(multipleDamage);
 
                 currentState = States.ATTACK_COOLTIME;
 
@@ -207,7 +210,7 @@ public class Tower : MonoBehaviour
 
     void CardUpgrading()
     {
-
+        currentState = States.ATTACK;
     }
 
     bool IsClicked()
@@ -232,6 +235,10 @@ public class Tower : MonoBehaviour
 
         Tower tower;
         tower = upgradeClickManager.ClickedTower.GetComponent<Tower>();
+
+        MoneyManager moneyManager;
+        moneyManager = GameObject.Find("MoneyManager").GetComponent<MoneyManager>();
+
         if (!tower) return;
 
         tower.ChangeState(States.UPGRADING);
@@ -241,15 +248,27 @@ public class Tower : MonoBehaviour
         }
         else if (s == "SLOW")
         {
-            tower.ChangeTowerType(TowerManager.TowerType.SLOW);
+            if(moneyManager.mineral >= 20)
+            {
+                tower.ChangeTowerType(TowerManager.TowerType.SLOW);
+                moneyManager.mineral -= 20;
+            }
         }
         else if (s == "CANNON")
         {
-            tower.ChangeTowerType(TowerManager.TowerType.CANNON);
+            if (moneyManager.mineral >= 50)
+            {
+                tower.ChangeTowerType(TowerManager.TowerType.CANNON);
+                moneyManager.mineral -= 50;
+            }
         }
         else if (s == "POISON")
         {
-            tower.ChangeTowerType(TowerManager.TowerType.POISON);
+            if (moneyManager.mineral >= 40)
+            {
+                tower.ChangeTowerType(TowerManager.TowerType.POISON);
+                moneyManager.mineral -= 40;
+            }
         }
 
         DeleteUpgradeTowerUI();

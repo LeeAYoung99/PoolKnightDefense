@@ -80,7 +80,9 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'You can build a
 
-    basic tower here.'
+    basic tower here.
+
+    Gold: 50'
 --- !u!1 &234137871141968106
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,11 +199,12 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 8633855454846462451}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5029328091633759937, guid: 76fb643e5985fbe4e8bc8e3a775c83e4, type: 3}
+      - m_Target: {fileID: 5029328091633759937, guid: 76fb643e5985fbe4e8bc8e3a775c83e4,
+          type: 3}
         m_TargetAssemblyTypeName: FieldCube, Assembly-CSharp
         m_MethodName: DeleteCreateTowerUI
         m_Mode: 1
@@ -414,7 +417,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5029328091633759937, guid: 76fb643e5985fbe4e8bc8e3a775c83e4, type: 3}
+      - m_Target: {fileID: 5029328091633759937, guid: 76fb643e5985fbe4e8bc8e3a775c83e4,
+          type: 3}
         m_TargetAssemblyTypeName: FieldCube, Assembly-CSharp
         m_MethodName: CreateTower
         m_Mode: 1

@@ -9,6 +9,8 @@ public class Bullet : Poolable
     private float waitTime;
     public Transform Target;
 
+    public Damage damage = new Damage(1.0f, 1.0f);
+
     public enum State
     {
         IDLE,
@@ -36,7 +38,7 @@ public class Bullet : Poolable
 
     void Idle()
     {
-        dis = Vector3.Distance(gameObject.transform.position, Target.position);
+        if(Target) dis = Vector3.Distance(gameObject.transform.position, Target.position);
 
         //포탄생성후 초반에 포탄이 벌어지듯이 연출하기위해
         //포탄의 회전을 캐릭터위치에서 포탄의 위치의 방향으로 놓습니다
@@ -44,6 +46,8 @@ public class Bullet : Poolable
         state = State.MOVE;
         waitTime = 0;
         speed = 0;
+
+        damage.SetDamage(1.0f);
     }
 
     void Move()
@@ -91,6 +95,11 @@ public class Bullet : Poolable
         Quaternion qua = Quaternion.LookRotation(directionVec);
         gameObject.transform.rotation = Quaternion.Slerp(gameObject.transform.rotation, qua, Time.deltaTime * 5f);
 
+    }
+
+    public void MultiplyDamage(float f)
+    {
+        damage.MultiplyDamage(f);
     }
 
 }

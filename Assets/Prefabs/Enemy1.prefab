@@ -139,9 +139,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d271a5adc6b730949b5e0c38f5f30945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 20
-  maxHealth: 20
+  health: 10
+  maxHealth: 10
   isPoison: 0
+  Lion: {fileID: 369532968614210929, guid: b4fabdb296f82d34891527c50541655e, type: 3}
+  Sword: {fileID: 8089785894346742502, guid: 873f58c743786534383f3b411c3d82cb, type: 3}
+  Crown: {fileID: 6050785080533281535, guid: bfbf18ab2a7e19542b2c4c047053c31c, type: 3}
 --- !u!195 &8224351419371972484
 NavMeshAgent:
   m_ObjectHideFlags: 0

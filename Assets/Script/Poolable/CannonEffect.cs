@@ -5,6 +5,7 @@ using UnityEngine;
 public class CannonEffect : Poolable
 {
     float time = 0;
+    public Damage damage = new Damage(3.0f, 1.0f);
 
     public enum State
     {
@@ -46,6 +47,7 @@ public class CannonEffect : Poolable
         this.gameObject.GetComponent<ParticleSystem>().Stop();
         this.gameObject.GetComponent<ParticleSystem>().Play();
         this.gameObject.GetComponent<CapsuleCollider>().enabled = true;
+        damage.SetDamage(3.0f);
     }
 
     void Move()

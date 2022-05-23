@@ -7,6 +7,7 @@ public class Cannon : Poolable
 
     public float firingAngle = 45.0f;
     public float gravity = 9.8f;
+    float multipleDamage = 1.0f;
     public Transform Target;
     private Vector3 Dest;
     bool isDest;
@@ -15,7 +16,6 @@ public class Cannon : Poolable
     private Transform myTransform;
 
     float elapse_time = 0;
-
 
     public enum State
     {
@@ -123,7 +123,13 @@ public class Cannon : Poolable
             _cannonEffect = ObjectPoolManager.Instance.cannonEffectPool.Pop();
             _cannonEffect.transform.position = this.transform.position;
             _cannonEffect.GetComponent<CannonEffect>().SetState(CannonEffect.State.IDLE);
+            _cannonEffect.GetComponent<CannonEffect>().damage.MultiplyDamage(multipleDamage);
         }
+    }
+
+    public void SetMultipleDamage(float f)
+    {
+        multipleDamage = f;
     }
 
     //https://allisnothing.tistory.com/23

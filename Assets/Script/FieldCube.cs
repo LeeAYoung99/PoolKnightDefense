@@ -14,6 +14,7 @@ public class FieldCube : MonoBehaviour
 
     public GameObject Tower;
 
+
     BFS bfs;
 
     //private Vector2 ScreenCentor;
@@ -50,8 +51,17 @@ public class FieldCube : MonoBehaviour
         gameField = GameObject.Find("GameField").GetComponent<GameField>();
         bfs = GameObject.Find("BFS").GetComponent<BFS>();
 
-        if (gameField.GetTowerType(GameManager.currentClickedButtonWidth, GameManager.currentClickedButtonHeight) == GameField.TowerType.NONE)
+
+        MoneyManager moneyManager;
+        moneyManager = GameObject.Find("MoneyManager").GetComponent<MoneyManager>();
+
+        if (moneyManager.gold < 50)
         {
+
+        }
+        else if (gameField.GetTowerType(GameManager.currentClickedButtonWidth, GameManager.currentClickedButtonHeight) == GameField.TowerType.NONE)
+        {
+
             gameField.ChangeTowerType(GameManager.currentClickedButtonWidth, GameManager.currentClickedButtonHeight, GameField.TowerType.BASIC_TYPE);
 
 
@@ -67,6 +77,7 @@ public class FieldCube : MonoBehaviour
                 _tower = Instantiate(Tower,
                     new Vector3(GameManager.currentClickedButtonWidth * 1.0f, gameObject.transform.position.y + 0.1f, GameManager.currentClickedButtonHeight * 1.0f)
                     , Quaternion.identity);
+                moneyManager.gold -= 50;
             }
 
           
